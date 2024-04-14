@@ -42,6 +42,7 @@ public:
 vector<Zdarzenie> tablicaZdarzen;
 vector<char> keys;
 unordered_map < char, Zdarzenie > mapaZdarzen;
+string CPM_String;
 
 ostream& operator<<(ostream& os, const vector<char> x) {
 	if (x.empty())
@@ -98,6 +99,50 @@ void FindNastepcy() {
 	}
 }
 
+string SanitizeCPM(string CPM) {
+
+	string result = "";
+	for (char zdarzenie : CPM) {
+		auto it = mapaZdarzen.find(zdarzenie);
+		//Jesli poczatek lub koniec - dodaj i tak
+		if (it->second.Poprzednicy.empty() == true || it->second.Nastepcy.empty() == true) {
+			result += zdarzenie;
+			continue;
+		}
+
+		//Sprawdz czy nastepnicy sa w CPM -> if not, wywal 
+		bool isOk = false;
+		//Przeiteruj po Nastepnikach
+		for (char nastepnik : it->second.Nastepcy) {
+			
+			//Wskaż na nastepnika
+			auto it_nast = mapaZdarzen.find(nastepnik);
+			//Jak ma rezerwe -> skip do nastepnego
+			if (it_nast->second.Rezerwa == 0) {
+				isOk = true;
+				break;
+			}
+		}
+		if (!isOk)
+			continue;
+	//Sprawdz w poprzednikach
+		isOk = false;
+		for (char poprzednik : it->second.Poprzednicy) {
+			//Wskaż na poprzednika
+			auto it_pop = mapaZdarzen.find(poprzednik);
+			//Jak ma rezerwe -> skip do nastepnego
+			if (it_pop->second.Rezerwa == 0) {
+				isOk = true;
+				break;
+			}
+		}
+		if (isOk)
+			result += zdarzenie;
+	}
+
+	return result;
+}
+
 void LogikaBackwards() {
 	
 	int totalTime = 0;
@@ -147,6 +192,17 @@ string WyznaczCPM() {
 int main()
 {
 	/*
+		Zdarzenie A('A', 7);
+	Zdarzenie B('B', 9);
+	Zdarzenie C('C', 12, vector<char>{'A'});
+	Zdarzenie D('D', 8, vector<char>{'A', 'B'});
+	Zdarzenie E('E', 9, vector<char>{'D'});
+	Zdarzenie F('F', 6, vector<char>{'C', 'E'});
+	Zdarzenie G('G', 5, vector<char>{'E'});
+	tablicaZdarzen.insert(tablicaZdarzen.begin(), { A,B,C,D,E,F,G });
+	*/
+
+
 	Zdarzenie A('A', 3);
 	Zdarzenie B('B', 4, vector<char>{'A'});
 	Zdarzenie C('C', 2, vector<char>{'A'});
@@ -156,17 +212,6 @@ int main()
 	Zdarzenie G('G', 4, vector<char>{'D', 'E'});
 	Zdarzenie H('H', 3, vector<char>{'F', 'G'});
 	tablicaZdarzen.insert(tablicaZdarzen.begin(), { A,B,C,D,E,F,G,H });
-	*/
-	Zdarzenie A('A', 7);
-	Zdarzenie B('B', 9);
-	Zdarzenie C('C', 12, vector<char>{'A'});
-	Zdarzenie D('D', 8, vector<char>{'A', 'B'});
-	Zdarzenie E('E', 9, vector<char>{'D'});
-	Zdarzenie F('F', 6, vector<char>{'C', 'E'});
-	Zdarzenie G('G', 5, vector<char>{'E'});
-	tablicaZdarzen.insert(tablicaZdarzen.begin(), { A,B,C,D,E,F,G });
-
-
 	int i = 0;
 	for (Zdarzenie x : tablicaZdarzen) {
 		mapaZdarzen.insert({ 65 + (i++), x });
@@ -178,5 +223,7 @@ int main()
 	for (auto xx : mapaZdarzen) {
 		cout << xx.second << endl;
 	}
-	cout << endl << "Path to CPM:\t" << WyznaczCPM();
+	CPM_String = WyznaczCPM();
+	cout << CPM_String << endl;
+	cout<<SanitizeCPM(CPM_String);
 }
