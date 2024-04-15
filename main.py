@@ -83,6 +83,16 @@ F = Zdarzenie('F', 6, ['C', 'E'])
 G = Zdarzenie('G', 5, ['E'])
 tablicaZdarzen = [A, B, C, D, E, F, G]
 
+#A = Zdarzenie('A', 3)
+#B = Zdarzenie('B', 4, ['A'])
+#C = Zdarzenie('C', 2, ['A'])
+#D = Zdarzenie('D', 5, ['B'])
+#E = Zdarzenie('E', 1, ['C'])
+#F = Zdarzenie('F', 2, ['C'])
+#G = Zdarzenie('G', 4, ['D', 'E'])
+#H = Zdarzenie('H', 3, ['F', 'G'])
+#tablicaZdarzen = [A, B, C, D, E, F, G, H]
+
 i = 0
 for x in tablicaZdarzen:
     mapaZdarzen[chr(65+i)] = x
