@@ -114,6 +114,27 @@ public class CPMScheduler {
     }
 
     public static void main(String[] args) {
+
+        /*
+         * 
+
+         Zdarzenie A = new Zdarzenie("A", 3, new ArrayList<>());
+         Zdarzenie B = new Zdarzenie("B", 4, new ArrayList<>(List.of("A")));
+         Zdarzenie C = new Zdarzenie("C", 2, new ArrayList<>(List.of("A")));
+         Zdarzenie D = new Zdarzenie("D", 5, new ArrayList<>(List.of("B")));
+         Zdarzenie E = new Zdarzenie("E", 1, new ArrayList<>(List.of("C")));
+         Zdarzenie F = new Zdarzenie("F", 2, new ArrayList<>(List.of("C")));
+         Zdarzenie G = new Zdarzenie("G", 4, new ArrayList<>(List.of("D", "E")));
+         Zdarzenie H = new Zdarzenie("H", 3, new ArrayList<>(List.of("F", "G")));
+         tablicaZdarzen.add(A);
+         tablicaZdarzen.add(B);
+         tablicaZdarzen.add(C);
+         tablicaZdarzen.add(D);
+         tablicaZdarzen.add(E);
+         tablicaZdarzen.add(F);
+         tablicaZdarzen.add(G);
+         tablicaZdarzen.add(H);
+         */
         Zdarzenie A = new Zdarzenie("A", 7, new ArrayList<>());
         Zdarzenie B = new Zdarzenie("B", 9, new ArrayList<>());
         Zdarzenie C = new Zdarzenie("C", 12, new ArrayList<>(List.of("A")));
@@ -145,4 +166,3 @@ public class CPMScheduler {
         System.out.println("Path to CPM: " + WyznaczCPM());
     }
 }
-
