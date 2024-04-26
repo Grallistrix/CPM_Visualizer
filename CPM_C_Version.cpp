@@ -192,7 +192,7 @@ string WyznaczCPM() {
 int main()
 {
 	/*
-		Zdarzenie A('A', 7);
+	Zdarzenie A('A', 7);
 	Zdarzenie B('B', 9);
 	Zdarzenie C('C', 12, vector<char>{'A'});
 	Zdarzenie D('D', 8, vector<char>{'A', 'B'});
