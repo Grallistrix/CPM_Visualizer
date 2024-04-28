@@ -17,7 +17,8 @@ void FindNastepcy();
 std::string SanitizeCPM(std::string CPM);
 void LogikaBackwards();
 std::string WyznaczCPM();
-
+bool isAlreadyUsed(char c, const vector<char>& usedNames);
+String extractLetters(String str);
 
 //---------------------------------------------------------------------------
 #endif

@@ -127,5 +127,28 @@ std::string WyznaczCPM() {
     return CPM_Path;
 }
 
+bool isAlreadyUsed(char c, const vector<char>& usedNames) {
+	if(usedNames.size()!=0)
+		return std::find(usedNames.begin(), usedNames.end(), c) != usedNames.end();
+    return false;
+}
+
+String extractLetters(String str) {
+	String result;
+
+    for (int i = 1; i <= str.Length(); ++i) {
+        char c = str[i];
+
+        // Check if the character is not a comma or space
+        if (c != ',' && !std::isspace(c)) {
+            result += c;
+        }
+    }
+
+	return result;
+}
+
+
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
