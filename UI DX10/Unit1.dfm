@@ -85,6 +85,7 @@ object Form1: TForm1
     Height = 25
     Caption = 'ADD'
     TabOrder = 4
+    OnClick = Add_ButtonClick
   end
   object Edit_Button: TButton
     Left = 121
@@ -101,6 +102,7 @@ object Form1: TForm1
     Height = 25
     Caption = 'DELETE'
     TabOrder = 6
+    OnClick = Delete_ButtonClick
   end
   object Calculate_Button: TButton
     Left = 317
@@ -130,7 +132,7 @@ object Form1: TForm1
     Left = 217
     Top = 481
     Width = 127
-    Height = 25
+    Height = 23
     TabOrder = 10
     Text = 'FileName'
   end

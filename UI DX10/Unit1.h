@@ -31,6 +31,8 @@ __published:	// IDE-managed Components
 	TEdit *FileName_EditBox;
 	TLabel *Label1;
 	TOutline *Outline1;
+	void __fastcall Add_ButtonClick(TObject *Sender);
+	void __fastcall Delete_ButtonClick(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations
